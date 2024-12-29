@@ -3,18 +3,18 @@ function hex(i) {
     return `0x${i.toString(16)}`;
 }
 
-// get (compressed) address of |obj|
+// get (compressed) address of `obj`
 function addrof(obj) {
     return Sandbox.getAddressOf(obj);
 }
 
-// read 8-byte from |addr| in sandbox
+// read 8-byte from `addr` in sandbox
 function read8(addr) {
     let memory_view = new DataView(new Sandbox.MemoryView(addr, 8));
     return memory_view.getBigUint64(0, true);
 }
 
-// write 8-byte |value| to |addr| in sandbox
+// write 8-byte `value` to `addr` in sandbox
 function write8(addr, value) {
     let memory_view = new DataView(new Sandbox.MemoryView(addr, 8));
     memory_view.setBigUint64(0, value, true);
