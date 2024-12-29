@@ -1,6 +1,6 @@
 # Escaping V8 Sandbox via Overwriting WebAssembly Jump Table (Chromium < 100.0.4896.60, V8 < 10.0.136)
 
-In this post, I will explain how to escape V8 sandbox via overwriting WebAssembly jump table for getting RCE, while I have limited exploitation primitives like sandboxed AAR/AAW.
+In this post, I will explain how to escape V8 sandbox via overwriting WebAssembly jump table for getting RCE, while we have limited exploitation primitives like sandboxed AAR/AAW.
 
 ## Setup
 
