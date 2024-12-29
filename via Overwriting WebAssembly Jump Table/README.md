@@ -19,7 +19,7 @@ We can implement sandboxed [`addrof`](./pwn.js#L7) primitive which returns addre
 
 ### Expand AAR/AAW
 
-`ArrayBuffer` store data in its backing store.
+`ArrayBuffer` stores data in its backing store.
 
 ![](img/img1.png)
 
