@@ -21,9 +21,9 @@ We can implement sandboxed [`addrof`](./pwn.js#L7) primitive which returns addre
 
 `ArrayBuffer` stores data in its backing store.
 
-![](img/img1.png)
+![](img/1.png)
 
-![](img/img2.png)
+![](img/2.png)
 
 The address of backing store is saved in `ArrayBuffer` object as 8-byte full pointer. We can overwrite this pointer with arbitrary address using sandboxed AAW primitive. Then, the value we store in this `ArrayBuffer` will be written to the new backing store. That would be full AAR/AAW primitives, which work outside of V8 sandbox.
 
@@ -31,9 +31,9 @@ The address of backing store is saved in `ArrayBuffer` object as 8-byte full poi
 
 When we construct a Wasm module, a memory region with RWX permission is allocated for compiling and executing Wasm function.
 
-![](img/img3.png)
+![](img/3.png)
 
-At the head of this region, there is jump table which is responsible to decide execution flow for Wasm function. In short, when Wasm function is called, `rip` moves to the jump table. So, if we overwrite jump table with arbitrary shellcode using full AAW primitive, the shellcode will be executed when Wasm function is called.
+At the head of this region, there is jump table which is responsible for deciding execution flow of Wasm function. In short, when Wasm function is called, `rip` moves to the jump table. So, if we overwrite jump table with arbitrary shellcode using full AAW primitive, the shellcode will be executed when Wasm function is called.
 
 ```bash
 echo '(module (func (export "main")))' > pwn.wat
@@ -42,7 +42,7 @@ echo '(module (func (export "main")))' > pwn.wat
 
 [`pwn.js`](./pwn.js)
 
-![](img/img4.png)
+![](img/4.png)
 
 ## Patch
 
