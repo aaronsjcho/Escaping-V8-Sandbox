@@ -49,11 +49,7 @@ From the second call, it directly jumps to compiled code.
 
 With lazy compilation enabled, we can overwrite `jump_table_start` with the address which we want to jump to, before Wasm function is compiled. Then, `Builtins_WasmCompileLazy()` will jump to the address after compilation is over, which means that we can control `rip`.
 
-[`shellcode.py`](./shellcode.py)
-
-[`pwn.wat`](./pwn.wat)
-
-[`wasm.py`](./wasm.py)
+[`shellcode.py`](./shellcode.py) [`pwn.wat`](./pwn.wat) [`wasm.py`](./wasm.py)
 
 ```zsh
 ~/wabt/bin/wat2wasm pwn.wat # output: pwn.wasm
