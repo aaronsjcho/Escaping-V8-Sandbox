@@ -113,4 +113,5 @@ When Wasm function is called, we can see following execution flow:
 ## Patch
 
 > [[sandbox] Refactor and sandboxify WasmInternalFunction::call_target](https://chromium.googlesource.com/v8/v8/+/2eb73988a37a60520a0f8e0b1109edbcc0b91415) (Jul 26th, 2022)
+> 
 > This CL refactors WasmInternalFunction to no longer inherit from Foreign but instead contain a (sandboxed) ExternalPointer field for the call target.
