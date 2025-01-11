@@ -85,9 +85,7 @@ With just 8-byte shellcode, we won't be able to do what we want to do. Instead, 
 
 If `main()` loads the same number twice, the second is not inserted to compiled code. Then, chain is broken and shellcode doesn't work. Therefore, we should slightly change the order of instructions or move the position of `nop` instructions to make sure that all numbers are different. In addition, we should consider that the distance between shellcodes is changed from the middle because the code which backs registers up to stack is inserted if all registers are in use.
 
-[`pwn.wat`](./pwn.wat)
-
-[`wasm.py`](./wasm.py)
+[`pwn.wat`](./pwn.wat) [`wasm.py`](./wasm.py)
 
 ```zsh
 ~/wabt/bin/wat2wasm pwn.wat # output: pwn.wasm
