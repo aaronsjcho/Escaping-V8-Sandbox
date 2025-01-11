@@ -4,7 +4,7 @@ In this post, I will explain how to escape V8 sandbox to get RCE via `RegExp` by
 
 ## Setup
 
-- Ubuntu 24.04.1 LTS
+- Ubuntu 24.04.1 LTS (WSL)
 - [0c1231b6414d19468d6f7a35ff5b6167626f57a5](https://chromium.googlesource.com/v8/v8/+/0c1231b6414d19468d6f7a35ff5b6167626f57a5) (Mar 22nd, 2024)
 
 Run [`setup.zsh`](./setup.zsh) in your working directory.
