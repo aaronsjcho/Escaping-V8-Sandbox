@@ -73,4 +73,5 @@ The new exploitation technique explained in this post was introduced in the comm
 ## Patch
 
 > [[wasm] Introduce WasmTrustedInstanceData](https://chromium.googlesource.com/v8/v8/+/59acab802a319da23c1c005e062fbc2bab4d348b) (Jan 4th, 2024)
+> 
 > This CL moves most data from the WasmInstanceObject to a new WasmTrustedInstanceData. As the name suggests, this new object is allocated in the trusted space and can hence hold otherwise-unsafe data (like direct pointers). As the Wasm instance was still storing some unsafe pointers, this CL closes holes in the V8 sandbox, and allows us to land follow-up refactorings to remove more indirections for sandboxing (potentially after moving more data structures to the trusted space).
