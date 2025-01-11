@@ -35,6 +35,8 @@ When we construct a Wasm module, a memory region with RWX permission is allocate
 
 At the head of this region, there is jump table which is responsible for deciding execution flow of Wasm function. In short, when Wasm function is called, `rip` moves to the jump table. So, if we overwrite jump table with arbitrary shellcode using full AAW primitive, the shellcode will be executed when Wasm function is called.
 
+[`wasm.py`](./wasm.py)
+
 ```bash
 echo '(module (func (export "main")))' > pwn.wat
 ~/wabt/bin/wat2wasm pwn.wat # output: pwn.wasm
