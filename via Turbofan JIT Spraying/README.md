@@ -8,6 +8,7 @@ In this post, I will explain how to escape V8 sandbox to get RCE via Turbofan JI
 - [4512c6eb7189c21f39420ddf8d9ff4f05a4a39b4](https://chromium.googlesource.com/v8/v8/+/4512c6eb7189c21f39420ddf8d9ff4f05a4a39b4) (Jul 11th, 2023)
 
 Run [`setup.zsh`](./setup.zsh) in your working directory.
+
 ## Exploitation
 
 ### Implement exploitation primitives
