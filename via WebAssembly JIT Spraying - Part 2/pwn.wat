@@ -1,0 +1,22 @@
+(module
+    (func (export "main")
+	i64.const 0x2eb909090c03148
+	i64.const 0x2eb9050636cb866
+	i64.const 0x2eb906163782fb8
+	i64.const 0x2eb909020e0c148
+	i64.const 0x2eb6e69622f0548
+	i64.const 0x2eb9090e7894850
+	i64.const 0x2eb909090f63148
+	i64.const 0x2eb9090c0314890
+	i64.const 0x2eb9050303ab866
+	i64.const 0x6eb903d59414cb8
+	i64.const 0x6eb9020e0c14890
+	i64.const 0x6eb505349440548
+	i64.const 0x6eb9090e0894850
+	i64.const 0x6eb905053db3148
+	i64.const 0x6eb909090e28948
+	i64.const 0x6eb903bb0c03148
+	i64.const 0x909090909090050f
+	return
+    )
+)
