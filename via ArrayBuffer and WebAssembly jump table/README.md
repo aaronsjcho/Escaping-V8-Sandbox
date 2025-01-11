@@ -1,15 +1,15 @@
-# Escaping V8 Sandbox via Overwriting WebAssembly Jump Table (Chromium < 100.0.4896.60, V8 < 10.0.136)
+# Escaping V8 Sandbox via ArrayBuffer and WebAssembly Jump Table (Chromium < 100.0.4896.60)
 
-In this post, I will explain how to escape V8 sandbox via overwriting WebAssembly jump table for getting RCE, while we have limited exploitation primitives like sandboxed AAR/AAW.
+In this post, I will explain how to escape V8 sandbox to get RCE via ArrayBuffer and WebAssembly jump table, while we have limited exploitation primitives like `addrof` and sandboxed AAR/AAW.
 
 ## Setup
 
 - Ubuntu 20.04.6 LTS (WSL)
-- [7c369ec82136ac0afc559aaa0b31614840fcc0a0](https://chromium.googlesource.com/v8/v8.git/+/7c369ec82136ac0afc559aaa0b31614840fcc0a0) (Feb 15, 2022)
+- [7c369ec82136ac0afc559aaa0b31614840fcc0a0](https://chromium.googlesource.com/v8/v8.git/+/7c369ec82136ac0afc559aaa0b31614840fcc0a0) (Feb 15th, 2022)
 
 Save [`sandbox.diff`](./sandbox.diff) and [`setup.zsh`](./setup.zsh) in your working directory, and run `setup.zsh` (`zsh` is required).
 
-[`sandbox.diff`](./sandbox.diff) is the same patch with [[sandbox] Add new Memory Corruption API](https://chromium.googlesource.com/v8/v8/+/4a12cb1022ba335ce087dcfe31b261355524b3bf) (May 20, 2022). Applying this patch, we can implement limited exploitation primitives using memory corruption API.
+`sandbox.diff` is the same patch with [[sandbox] Add new Memory Corruption API](https://chromium.googlesource.com/v8/v8/+/4a12cb1022ba335ce087dcfe31b261355524b3bf) (May 20th, 2022). Applying this patch, we can implement limited exploitation primitives using memory corruption API.
 
 ## Exploitation
 
@@ -38,6 +38,7 @@ At the head of this region, there is jump table which is responsible for decidin
 ```bash
 echo '(module (func (export "main")))' > pwn.wat
 ~/wabt/bin/wat2wasm pwn.wat # output: pwn.wasm
+python3 wasm.py # output: [0x0, 0x61, 0x73, 0x6d, 0x1, 0x0, 0x0, 0x0, 0x1, 0x4, 0x1, 0x60, 0x0, 0x0, 0x3, 0x2, 0x1, 0x0, 0x7, 0x8, 0x1, 0x4, 0x6d, 0x61, 0x69, 0x6e, 0x0, 0x0, 0xa, 0x4, 0x1, 0x2, 0x0, 0xb]
 ```
 
 [`pwn.js`](./pwn.js)
@@ -46,4 +47,4 @@ echo '(module (func (export "main")))' > pwn.wat
 
 ## Patch
 
-> [[wasm] Ship code protection via memory protection keys](https://chromium.googlesource.com/v8/v8.git/+/17b46632cba261c1eb9c87347a05867079e6a7b9) (Feb 15, 2022)
+> [[wasm] Ship code protection via memory protection keys](https://chromium.googlesource.com/v8/v8.git/+/17b46632cba261c1eb9c87347a05867079e6a7b9) (Feb 15th, 2022)
