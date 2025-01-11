@@ -108,7 +108,7 @@ When Wasm function is called, we can see following execution flow:
 
 [`pwn.js`](./pwn.js)
 
-![](img/11.pn)
+![](img/11.png)
 
 ## Patch
 
