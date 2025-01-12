@@ -105,7 +105,7 @@ function jit() {
 }
 ```
 
-You have to install `/bin/calc` by running `sudo apt install -y x11-apps` before executing [`pwn.js`](./pwn.js) if you are using WSL.
+You have to install `/bin/xcalc` by running `sudo apt install -y x11-apps` before executing [`pwn.js`](./pwn.js) if you are using WSL.
 
 ![](img/7.png)
 
