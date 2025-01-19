@@ -71,7 +71,7 @@ let wasm_instance = new WebAssembly.Instance(wasm_module);
 
 ![](img/5.png)
 
-`main()` in `wasm_module` is a function which loads 64-bit constants. These constants are inserted to the compiled code as raw numbers. It means that we can insert arbitrary 8-byte constants to executable code region. If we move `rip` to the address of any constant, it will act like an 8-byte shellcode.
+`main()` in `wasm_module` is a function which loads 64-bit constants. These constants are inserted to compiled code as raw numbers. It means that we can insert arbitrary 8-byte constants to executable code region. If we move `rip` to the address of any constant, it will act like an 8-byte shellcode.
 
 ### Construct shellcode chain
 
