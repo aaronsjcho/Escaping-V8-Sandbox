@@ -2,7 +2,8 @@
 
 # install depot_tools
 git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git ~/depot_tools
-echo "\nexport PATH=\$HOME/depot_tools:\$PATH
+echo "
+export PATH=\$HOME/depot_tools:\$PATH
 export NINJA_SUMMARIZE_BUILD=1" >>~/.zshrc
 source ~/.zshrc
 
@@ -32,7 +33,8 @@ cd v8
 sudo apt install -y ninja-build
 
 # install gdb plugin
-echo "\nsource $HOME/v8/v8/tools/gdbinit" >>~/.gdbinit
+echo "
+source $HOME/v8/v8/tools/gdbinit" >>~/.gdbinit
 
 # build v8
 git apply ../sandbox.diff
