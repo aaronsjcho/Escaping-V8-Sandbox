@@ -33,7 +33,7 @@ When we construct a Wasm module, a memory region with RWX permission is allocate
 
 ![](img/3.png)
 
-At the head of this region, there is jump table which is responsible for deciding execution flow of Wasm function. In short, when Wasm function is called, `rip` moves to the jump table. So, if we overwrite jump table with arbitrary shellcode using full AAW primitive, the shellcode will be executed when Wasm function is called.
+At the very front of this region, there is jump table which is responsible for deciding execution flow when Wasm function is called. In short, when Wasm function is called, `rip` moves to the jump table. So, if we overwrite jump table with arbitrary shellcode using full AAW primitive, the shellcode will be executed when Wasm function is called.
 
 [`wasm.py`](./wasm.py)
 
