@@ -25,7 +25,7 @@ We can implement sandboxed [`addrof`](./pwn.js#L7) primitive which returns addre
 
 ![](img/2.png)
 
-The address of backing store is saved in `ArrayBuffer` object as 8-byte full pointer. We can overwrite this pointer with arbitrary address using sandboxed AAW primitive. Then, the value we store in this `ArrayBuffer` will be written to the new backing store. That would be full AAR/AAW primitives, which work outside of V8 sandbox.
+The address of backing store is saved in `ArrayBuffer` object as 8-byte full pointer. We can overwrite this pointer with arbitrary address using sandboxed AAW primitive. Then, the value we store in this `ArrayBuffer` will be written to new backing store. This leads us to full AAR/AAW primitives, which work outside of V8 sandbox.
 
 ### Execute shellcode
 
