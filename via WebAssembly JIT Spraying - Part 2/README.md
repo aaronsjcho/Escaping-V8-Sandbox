@@ -1,11 +1,11 @@
-# Escaping V8 Sandbox via WebAssembly JIT Spraying: Part 2 (110.0.5481.77 <= Chromium < 122.0.6261.57)
+# Escaping V8 Sandbox via WebAssembly JIT Spraying: Part 2 (110.0.5449.0 <= Chromium < 122.0.6238.2)
 
 After the [patch](https://chromium.googlesource.com/v8/v8/+/2eb73988a37a60520a0f8e0b1109edbcc0b91415) for the exploitation technique explained in [part 1](https://aaronsjcho.github.io/Escaping-V8-Sandbox-via-WebAssembly-JIT-Spraying-Part-1/), we cannot directly overwrite call target and control `rip`. However, a new technique was introduced because of newly implemented lazy compilation for Wasm function. I will explain about this in this post.
 
 ## Setup
 
 - Ubuntu 22.04.5 LTS (WSL)
-- [8cf17a14a78cc1276eb42e1b4bb699f705675530](https://chromium.googlesource.com/v8/v8/+/8cf17a14a78cc1276eb42e1b4bb699f705675530) (Jan 4th, 2024)
+- [8cf17a14a78cc1276eb42e1b4bb699f705675530](https://chromium.googlesource.com/v8/v8/+/8cf17a14a78cc1276eb42e1b4bb699f705675530) (Jan 4, 2024)
 
 Run [`setup.zsh`](./setup.zsh) in your working directory.
 ## Analysis
@@ -62,12 +62,12 @@ You have to install `/bin/xcalc` by running `sudo apt install -y x11-apps` befor
 
 ## Bisection
 
-> [[wasm] Enable lazy compilation by default](https://chromium.googlesource.com/v8/v8/+/29131d5e3ea9cbfeae3e6dc3fd6c4439f0ac4bde) (Nov 14th, 2022)
+> [[wasm] Enable lazy compilation by default](https://chromium.googlesource.com/v8/v8/+/29131d5e3ea9cbfeae3e6dc3fd6c4439f0ac4bde) (Nov 14, 2022)
 
 The new exploitation technique explained in this post was introduced in the commit above, which enabled lazy compilation for Wasm function by default.
 
 ## Patch
 
-> [[wasm] Introduce WasmTrustedInstanceData](https://chromium.googlesource.com/v8/v8/+/59acab802a319da23c1c005e062fbc2bab4d348b) (Jan 4th, 2024)
+> [[wasm] Introduce WasmTrustedInstanceData](https://chromium.googlesource.com/v8/v8/+/59acab802a319da23c1c005e062fbc2bab4d348b) (Jan 4, 2024)
 > 
 > This CL moves most data from the WasmInstanceObject to a new WasmTrustedInstanceData. As the name suggests, this new object is allocated in the trusted space and can hence hold otherwise-unsafe data (like direct pointers). As the Wasm instance was still storing some unsafe pointers, this CL closes holes in the V8 sandbox, and allows us to land follow-up refactorings to remove more indirections for sandboxing (potentially after moving more data structures to the trusted space).
