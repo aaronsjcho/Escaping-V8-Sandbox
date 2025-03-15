@@ -1,11 +1,11 @@
-# Escaping V8 Sandbox via Turbofan JIT Spraying: Part 1 (Chromium < 100.0.4896.60)
+# Escaping V8 Sandbox via Turbofan JIT Spraying: Part 1 (Chromium < 100.0.4867.0)
 
 In this post, I will explain how to escape V8 sandbox via Turbofan JIT Spraying to get RCE, while we have limited exploitation primitives like `addrof` and sandboxed AAR/AAW primitives.
 
 ## Setup
 
 - Ubuntu 20.04.6 LTS (WSL)
-- [9d0222424e6adf89663949d9e60e5ffe77d1cc83](https://chromium.googlesource.com/v8/v8/+/9d0222424e6adf89663949d9e60e5ffe77d1cc83) (Jan 24th, 2022)
+- [9d0222424e6adf89663949d9e60e5ffe77d1cc83](https://chromium.googlesource.com/v8/v8/+/9d0222424e6adf89663949d9e60e5ffe77d1cc83) (Jan 24, 2022)
 
 Save [`sandbox.diff`](./sandbox.diff) and [`setup.zsh`](./setup.zsh) in your working directory and run `setup.zsh`.
 
@@ -127,4 +127,4 @@ You have to install `/bin/xcalc` by running `sudo apt install -y x11-apps` befor
 
 ## Patch
 
-> [[ext-code-space] Enable external code space on x64 and desktop arm64](https://chromium.googlesource.com/v8/v8/+/7fc4868e477cc7cb7ef8c304fff214ea83498e7a) (Jan 24th, 2022)
+> [[ext-code-space] Enable external code space on x64 and desktop arm64](https://chromium.googlesource.com/v8/v8/+/7fc4868e477cc7cb7ef8c304fff214ea83498e7a) (Jan 24, 2022)
