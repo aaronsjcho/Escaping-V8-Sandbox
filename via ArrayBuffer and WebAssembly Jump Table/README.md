@@ -1,11 +1,11 @@
-# Escaping V8 Sandbox via ArrayBuffer and WebAssembly Jump Table (Chromium < 100.0.4896.60)
+# Escaping V8 Sandbox via ArrayBuffer and WebAssembly Jump Table (Chromium < 100.0.4892.0)
 
 In this post, I will explain how to escape V8 sandbox to get RCE via ArrayBuffer and WebAssembly jump table, while we have limited exploitation primitives like `addrof` and sandboxed AAR/AAW.
 
 ## Setup
 
 - Ubuntu 20.04.6 LTS (WSL)
-- [7c369ec82136ac0afc559aaa0b31614840fcc0a0](https://chromium.googlesource.com/v8/v8.git/+/7c369ec82136ac0afc559aaa0b31614840fcc0a0) (Feb 15th, 2022)
+- [7c369ec82136ac0afc559aaa0b31614840fcc0a0](https://chromium.googlesource.com/v8/v8.git/+/7c369ec82136ac0afc559aaa0b31614840fcc0a0) (Feb 15, 2022)
 
 Save [`sandbox.diff`](./sandbox.diff) and [`setup.zsh`](./setup.zsh) in your working directory, and run `setup.zsh` (`zsh` is required).
 
@@ -49,4 +49,4 @@ You have to install `/bin/xcalc` by running `sudo apt install -y x11-apps` befor
 
 ## Patch
 
-> [[wasm] Ship code protection via memory protection keys](https://chromium.googlesource.com/v8/v8.git/+/17b46632cba261c1eb9c87347a05867079e6a7b9) (Feb 15th, 2022)
+> [[wasm] Ship code protection via memory protection keys](https://chromium.googlesource.com/v8/v8.git/+/17b46632cba261c1eb9c87347a05867079e6a7b9) (Feb 15, 2022)
