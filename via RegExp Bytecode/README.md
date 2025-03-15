@@ -1,11 +1,11 @@
-# Escaping V8 Sandbox via RegExp Bytecode (Chromium < 125.0.6422.60)
+# Escaping V8 Sandbox via RegExp Bytecode (Chromium < 125.0.6382.3)
 
 In this post, I will explain how to escape V8 sandbox to get RCE via `RegExp` bytecode, while we have limited exploitation primitives like `addrof` and sandboxed AAR/AAW.
 
 ## Setup
 
 - Ubuntu 24.04.1 LTS (WSL)
-- [0c1231b6414d19468d6f7a35ff5b6167626f57a5](https://chromium.googlesource.com/v8/v8/+/0c1231b6414d19468d6f7a35ff5b6167626f57a5) (Mar 22nd, 2024)
+- [0c1231b6414d19468d6f7a35ff5b6167626f57a5](https://chromium.googlesource.com/v8/v8/+/0c1231b6414d19468d6f7a35ff5b6167626f57a5) (Mar 22, 2024)
 
 Run [`setup.zsh`](./setup.zsh) in your working directory.
 
@@ -55,7 +55,7 @@ We can execute arbitrary shell command by writing arbitrary command (e.g. `/bin/
 
 ## Patch
 
-> [[regex] Check bounds on register access in interpreter](https://chromium.googlesource.com/v8/v8/+/b9349d97fd44aec615307c9d00697152da95a66a) (Mar 22nd, 2024)
+> [[regex] Check bounds on register access in interpreter](https://chromium.googlesource.com/v8/v8/+/b9349d97fd44aec615307c9d00697152da95a66a) (Mar 22, 2024)
 >
 > Registers in the interpreter are stored on the stack/heap outside the sandbox. The register index is stored in the bytecode, which is (not yet) in truested space.
 
