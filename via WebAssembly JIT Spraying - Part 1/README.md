@@ -1,13 +1,14 @@
-# Escaping V8 Sandbox via WebAssembly JIT Spraying: Part 1 (Chromium < 106.0.5249.61)
+# Escaping V8 Sandbox via WebAssembly JIT Spraying: Part 1 (Chromium < 106.0.5216.6)
 
 In this post, I will explain how to escape V8 sandbox to get RCE via WebAssembly JIT spraying, while we have limited exploitation primitives like `addrof` and sandboxed AAR/AAW.
 
 ## Setup
 
 - Ubuntu 22.04.5 LTS
-- [cb5c1b8a1fd1eee214501ee06fdd4566886803c1](https://chromium.googlesource.com/v8/v8/+/cb5c1b8a1fd1eee214501ee06fdd4566886803c1) (Jul 26th, 2022)
+- [cb5c1b8a1fd1eee214501ee06fdd4566886803c1](https://chromium.googlesource.com/v8/v8/+/cb5c1b8a1fd1eee214501ee06fdd4566886803c1) (Jul 26, 2022)
 
 Run [`setup.zsh`](./setup.zsh) in your working directory.
+
 ## Analysis
 
 ### WebAssembly jump table
@@ -110,6 +111,6 @@ When Wasm function is called, we can see following execution flow:
 
 ## Patch
 
-> [[sandbox] Refactor and sandboxify WasmInternalFunction::call_target](https://chromium.googlesource.com/v8/v8/+/2eb73988a37a60520a0f8e0b1109edbcc0b91415) (Jul 26th, 2022)
+> [[sandbox] Refactor and sandboxify WasmInternalFunction::call_target](https://chromium.googlesource.com/v8/v8/+/2eb73988a37a60520a0f8e0b1109edbcc0b91415) (Jul 26, 2022)
 > 
 > This CL refactors WasmInternalFunction to no longer inherit from Foreign but instead contain a (sandboxed) ExternalPointer field for the call target.
